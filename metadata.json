@@ -1,0 +1,1 @@
+{"name":"SignVue - Accessible ASL Interview Platform","description":"Accessible asynchronous video interview platform translating American Sign Language (ASL) into real-time transcripts and bias-adjusted hiring evaluations for deaf and mute job candidates.","requestFramePermissions":["camera"],"majorCapabilities":["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]}

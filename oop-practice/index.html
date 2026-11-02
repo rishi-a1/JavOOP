@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OOP Practice – Java & C++</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Monaco Editor loader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <script>
+        // Monaco loader configuration
+        window.require = { paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.47.0/min/vs' } };
+    </script>
+</head>
+<body>
+    <header>
+        <h1>OOP Practice – Java & C++</h1>
+        <div class="lang-toggle">
+            <button id="javaBtn" class="active">Java</button>
+            <button id="cppBtn">C++</button>
+        </div>
+    </header>
+    <main>
+        <section class="sidebar">
+            <h2>Questions</h2>
+            <div id="question-list"></div>
+        </section>
+        <section class="content">
+            <h2 id="title">Select a question</h2>
+            <div id="desc"></div>
+            <div id="editor" class="editor"></div>
+            <div class="controls">
+                <button id="runBtn">Run / Test</button>
+                <select id="customInput" class="input-select">
+                    <option value="">No custom input</option>
+                </select>
+            </div>
+            <pre id="output" class="output"></pre>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

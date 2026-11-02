@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "title": "Shape hierarchy",
+    "description": "Create an abstract class `Shape` with a method `area()`. Implement `Circle` and `Rectangle` subclasses.",
+    "starterCode": "public abstract class Shape {\n    public abstract double area();\n}\n\npublic class Circle extends Shape {\n    private double radius;\n    public Circle(double r) { this.radius = r; }\n    @Override\n    public double area() { return Math.PI * radius * radius; }\n}\n\npublic class Rectangle extends Shape {\n    private double w, h;\n    public Rectangle(double w, double h) { this.w = w; this.h = h; }\n    @Override\n    public double area() { return w * h; }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        // Write test code here\n        Circle c = new Circle(2.0);\n        Rectangle r = new Rectangle(3.0, 4.0);\n        System.out.println("Circle area: " + c.area());\n        System.out.println("Rectangle area: " + r.area());\n    }\n}\n",
+    "tags": ["inheritance", "abstract", "polymorphism"],
+    "difficulty": "Easy"
+  }
+]
