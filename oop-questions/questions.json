@@ -1,0 +1,64 @@
+[{
+  "id": 1,
+  "title": "Class Inheritance Chain",
+  "description": "Create a base class Animal and derived classes Mammal and Dog. Gradually add members.",
+  "stages": [
+    {"concept": "Inheritance", "code": "class Animal {\n    public String name;\n    public Animal(String name) { this.name = name; }\n}\n"},
+    {"concept": "Polymorphism", "code": "class Mammal extends Animal {\n    public void sound() { System.out.println(\"Some generic mammal sound\"); }\n}\n"},
+    {"concept": "Overriding", "code": "class Dog extends Mammal {\n    @Override\n    public void sound() { System.out.println(\"Woof!\"); }\n}\n"}
+  ],
+  "solution": "public class Main {\n    public static void main(String[] args) {\n        Dog d = new Dog(\"Buddy\");\n        d.sound(); // Woof!\n    }\n}\n"
+},
+{
+  "id": 2,
+  "title": "Static Methods and Members",
+  "description": "Demonstrate static fields and methods in a Utility class.",
+  "stages": [
+    {"concept": "Static Member", "code": "class MathUtil {\n    public static final double PI = 3.14159;\n}\n"},
+    {"concept": "Static Method", "code": "class MathUtil {\n    public static double square(double x) { return x * x; }\n}\n"}
+  ],
+  "solution": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(MathUtil.PI);\n        System.out.println(MathUtil.square(5));\n    }\n}\n"
+},
+{
+  "id": 3,
+  "title": "Encapsulation with Getters/Setters",
+  "description": "Create a Person class with private fields and public accessor methods.",
+  "stages": [
+    {"concept": "Encapsulation", "code": "class Person {\n    private String name;\n    private int age;\n    public Person(String name, int age) { this.name = name; this.age = age; }\n    public String getName() { return name; }\n    public void setName(String name) { this.name = name; }\n    public int getAge() { return age; }\n    public void setAge(int age) { this.age = age; }\n}\n"}
+  ],
+  "solution": "public class Main {\n    public static void main(String[] args) {\n        Person p = new Person(\"Alice\", 30);\n        System.out.println(p.getName() + \" is \" + p.getAge());\n    }\n}\n"
+},
+{
+  "id": 4,
+  "title": "Abstract Class and Abstract Method",
+  "description": "Define an abstract Shape class and concrete Circle and Rectangle classes.",
+  "stages": [
+    {"concept": "Abstract Class", "code": "abstract class Shape {\n    abstract double area();\n}\n"},
+    {"concept": "Concrete Subclass", "code": "class Circle extends Shape {\n    double radius;\n    Circle(double r) { this.radius = r; }\n    @Override\n    double area() { return Math.PI * radius * radius; }\n}\n"},
+    {"concept": "Another Subclass", "code": "class Rectangle extends Shape {\n    double w, h;\n    Rectangle(double w, double h) { this.w = w; this.h = h; }\n    @Override\n    double area() { return w * h; }\n}\n"}
+  ],
+  "solution": "public class Main {\n    public static void main(String[] args) {\n        Shape c = new Circle(2);\n        Shape r = new Rectangle(3,4);\n        System.out.println(c.area());\n        System.out.println(r.area());\n    }\n}\n"
+},
+{
+  "id": 5,
+  "title": "Interface Implementation",
+  "description": "Create an interface Vehicle with start() and stop(). Implement Car and Bike.",
+  "stages": [
+    {"concept": "Interface", "code": "interface Vehicle {\n    void start();\n    void stop();\n}\n"},
+    {"concept": "Car implements", "code": "class Car implements Vehicle {\n    public void start() { System.out.println(\"Car started\"); }\n    public void stop() { System.out.println(\"Car stopped\"); }\n}\n"},
+    {"concept": "Bike implements", "code": "class Bike implements Vehicle {\n    public void start() { System.out.println(\"Bike pedaling\"); }\n    public void stop() { System.out.println(\"Bike brakes\"); }\n}\n"}
+  ],
+  "solution": "public class Main {\n    public static void main(String[] args) {\n        Vehicle v1 = new Car();\n        Vehicle v2 = new Bike();\n        v1.start(); v1.stop();\n        v2.start(); v2.stop();\n    }\n}\n"
+},
+{
+  "id": 25,
+  "title": "Multiple Inheritance with Virtual Base (C++)",
+  "description": "Demonstrate diamond problem and resolve with virtual inheritance.",
+  "stages": [
+    {"concept": "Base", "code": "class Base {\npublic:\n    void greet() { std::cout << \"Hello from Base\" << std::endl; }\n};\n"},
+    {"concept": "Left and Right virtual", "code": "class Left : virtual public Base {} ;\nclass Right : virtual public Base {} ;\n"},
+    {"concept": "Derived", "code": "class Derived : public Left, public Right {} ;\n"}
+  ],
+  "solution": "int main() {\n    Derived d;\n    d.greet(); // No ambiguity due to virtual inheritance\n    return 0;\n}\n"
+}
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "Class Inheritance Chain (C++)",
+    "description": "Create a base class Animal and derived classes Mammal and Dog. Gradually add members.",
+    "starterCode": "#include <iostream>\n\nclass Animal {\npublic:\n    std::string name;\n    Animal(const std::string& n) : name(n) {}\n};\n\nclass Mammal : public Animal {\npublic:\n    Mammal(const std::string& n) : Animal(n) {}\n    virtual void sound() { std::cout << \"Some generic mammal sound\" << std::endl; }\n};\n\nclass Dog : public Mammal {\npublic:\n    Dog(const std::string& n) : Mammal(n) {}\n    void sound() override { std::cout << \"Woof!\" << std::endl; }\n};\n\nint main() {\n    Dog d(\"Buddy\");\n    d.sound(); // Expected: Woof!\n    return 0;\n}\n",
+    "solution": "#include <iostream>\n\nclass Animal {\npublic:\n    std::string name;\n    Animal(const std::string& n) : name(n) {}\n};\n\nclass Mammal : public Animal {\npublic:\n    Mammal(const std::string& n) : Animal(n) {}\n    virtual void sound() { std::cout << \"Some generic mammal sound\" << std::endl; }\n};\n\nclass Dog : public Mammal {\npublic:\n    Dog(const std::string& n) : Mammal(n) {}\n    void sound() override { std::cout << \"Woof!\" << std::endl; }\n};\n\nint main() {\n    Dog d(\"Buddy\");\n    d.sound();\n    return 0;\n}\n",
+    "tags": ["inheritance","polymorphism","overriding"],
+    "difficulty": "Easy"
+  },
+  {
+    "id": 2,
+    "title": "Static Functions and Members (C++)",
+    "description": "Demonstrate static fields and static member functions.",
+    "starterCode": "#include <iostream>\n\nclass MathUtil {\npublic:\n    static constexpr double PI = 3.1415926535;\n    static double square(double x) { return x * x; }\n};\n\nint main() {\n    std::cout << MathUtil::PI << std::endl;\n    std::cout << MathUtil::square(5) << std::endl;\n    return 0;\n}\n",
+    "solution": "#include <iostream>\n\nclass MathUtil {\npublic:\n    static constexpr double PI = 3.1415926535;\n    static double square(double x) { return x * x; }\n};\n\nint main() {\n    std::cout << MathUtil::PI << std::endl;\n    std::cout << MathUtil::square(5) << std::endl;\n    return 0;\n}\n",
+    "tags": ["static","member"],
+    "difficulty": "Easy"
+  },
+  {
+    "id": 3,
+    "title": "Encapsulation with Getters/Setters (C++)",
+    "description": "Create a Person class with private fields and public accessor methods.",
+    "starterCode": "#include <iostream>\n\nclass Person {\nprivate:\n    std::string name;\n    int age;\npublic:\n    Person(const std::string& n, int a) : name(n), age(a) {}\n    std::string getName() const { return name; }\n    void setName(const std::string& n) { name = n; }\n    int getAge() const { return age; }\n    void setAge(int a) { age = a; }\n};\n\nint main() {\n    Person p(\"Alice\", 30);\n    std::cout << p.getName() << \" is \" << p.getAge() << std::endl;\n    return 0;\n}\n",
+    "solution": "#include <iostream>\n\nclass Person {\nprivate:\n    std::string name;\n    int age;\npublic:\n    Person(const std::string& n, int a) : name(n), age(a) {}\n    std::string getName() const { return name; }\n    void setName(const std::string& n) { name = n; }\n    int getAge() const { return age; }\n    void setAge(int a) { age = a; }\n};\n\nint main() {\n    Person p(\"Alice\", 30);\n    std::cout << p.getName() << \" is \" << p.getAge() << std::endl;\n    return 0;\n}\n",
+    "tags": ["encapsulation"],
+    "difficulty": "Easy"
+  },
+  {
+    "id": 4,
+    "title": "Abstract Class and Virtual Method (C++)",
+    "description": "Define an abstract Shape class with a pure virtual area() method, then implement Circle and Rectangle.",
+    "starterCode": "#include <iostream>\n#include <cmath>\n\nclass Shape {\npublic:\n    virtual double area() const = 0;\n    virtual ~Shape() = default;\n};\n\nclass Circle : public Shape {\n    double radius;\npublic:\n    Circle(double r) : radius(r) {}\n    double area() const override { return M_PI * radius * radius; }\n};\n\nclass Rectangle : public Shape {\n    double w, h;\npublic:\n    Rectangle(double w_, double h_) : w(w_), h(h_) {}\n    double area() const override { return w * h; }\n};\n\nint main() {\n    Shape* s1 = new Circle(2.0);\n    Shape* s2 = new Rectangle(3.0, 4.0);\n    std::cout << s1->area() << std::endl;\n    std::cout << s2->area() << std::endl;\n    delete s1; delete s2;\n    return 0;\n}\n",
+    "solution": "#include <iostream>\n#include <cmath>\n\nclass Shape {\npublic:\n    virtual double area() const = 0;\n    virtual ~Shape() = default;\n};\n\nclass Circle : public Shape {\n    double radius;\npublic:\n    Circle(double r) : radius(r) {}\n    double area() const override { return M_PI * radius * radius; }\n};\n\nclass Rectangle : public Shape {\n    double w, h;\npublic:\n    Rectangle(double w_, double h_) : w(w_), h(h_) {}\n    double area() const override { return w * h; }\n};\n\nint main() {\n    Shape* s1 = new Circle(2.0);\n    Shape* s2 = new Rectangle(3.0, 4.0);\n    std::cout << s1->area() << std::endl;\n    std::cout << s2->area() << std::endl;\n    delete s1; delete s2;\n    return 0;\n}\n",
+    "tags": ["abstract","inheritance","virtual"],
+    "difficulty": "Medium"
+  },
+  {
+    "id": 5,
+    "title": "Interface via Pure Abstract Class (C++)",
+    "description": "Create a Vehicle interface using a pure abstract class, then implement Car and Bike.",
+    "starterCode": "#include <iostream>\n\nclass Vehicle {\npublic:\n    virtual void start() = 0;\n    virtual void stop() = 0;\n    virtual ~Vehicle() = default;\n};\n\nclass Car : public Vehicle {\npublic:\n    void start() override { std::cout << \"Car started\" << std::endl; }\n    void stop() override { std::cout << \"Car stopped\" << std::endl; }\n};\n\nclass Bike : public Vehicle {\npublic:\n    void start() override { std::cout << \"Bike pedaling\" << std::endl; }\n    void stop() override { std::cout << \"Bike brakes\" << std::endl; }\n};\n\nint main() {\n    Vehicle* v1 = new Car();\n    Vehicle* v2 = new Bike();\n    v1->start(); v1->stop();\n    v2->start(); v2->stop();\n    delete v1; delete v2;\n    return 0;\n}\n",
+    "solution": "#include <iostream>\n\nclass Vehicle {\npublic:\n    virtual void start() = 0;\n    virtual void stop() = 0;\n    virtual ~Vehicle() = default;\n};\n\nclass Car : public Vehicle {\npublic:\n    void start() override { std::cout << \"Car started\" << std::endl; }\n    void stop() override { std::cout << \"Car stopped\" << std::endl; }\n};\n\nclass Bike : public Vehicle {\npublic:\n    void start() override { std::cout << \"Bike pedaling\" << std::endl; }\n    void stop() override { std::cout << \"Bike brakes\" << std::endl; }\n};\n\nint main() {\n    Vehicle* v1 = new Car();\n    Vehicle* v2 = new Bike();\n    v1->start(); v1->stop();\n    v2->start(); v2->stop();\n    delete v1; delete v2;\n    return 0;\n}\n",
+    "tags": ["interface","polymorphism"],
+    "difficulty": "Easy"
+  },
+  {
+    "id": 25,
+    "title": "Multiple Inheritance with Virtual Base (C++)",
+    "description": "Demonstrate diamond problem and resolve with virtual inheritance.",
+    "starterCode": "#include <iostream>\n\nclass Base {\npublic:\n    void greet() { std::cout << \"Hello from Base\" << std::endl; }\n};\n\nclass Left : virtual public Base {} ;\nclass Right : virtual public Base {} ;\nclass Derived : public Left, public Right {} ;\n\nint main() {\n    Derived d;\n    d.greet(); // No ambiguity due to virtual inheritance\n    return 0;\n}\n",
+    "solution": "#include <iostream>\n\nclass Base {\npublic:\n    void greet() { std::cout << \"Hello from Base\" << std::endl; }\n};\n\nclass Left : virtual public Base {} ;\nclass Right : virtual public Base {} ;\nclass Derived : public Left, public Right {} ;\n\nint main() {\n    Derived d;\n    d.greet();\n    return 0;\n}\n",
+    "tags": ["multiple inheritance","virtual inheritance"],
+    "difficulty": "Hard"
+  }
+]

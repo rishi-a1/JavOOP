@@ -1,10 +1,57 @@
 [
   {
     "id": 1,
-    "title": "Shape hierarchy",
-    "description": "Create an abstract class `Shape` with a method `area()`. Implement `Circle` and `Rectangle` subclasses.",
-    "starterCode": "public abstract class Shape {\n    public abstract double area();\n}\n\npublic class Circle extends Shape {\n    private double radius;\n    public Circle(double r) { this.radius = r; }\n    @Override\n    public double area() { return Math.PI * radius * radius; }\n}\n\npublic class Rectangle extends Shape {\n    private double w, h;\n    public Rectangle(double w, double h) { this.w = w; this.h = h; }\n    @Override\n    public double area() { return w * h; }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        // Write test code here\n        Circle c = new Circle(2.0);\n        Rectangle r = new Rectangle(3.0, 4.0);\n        System.out.println("Circle area: " + c.area());\n        System.out.println("Rectangle area: " + r.area());\n    }\n}\n",
-    "tags": ["inheritance", "abstract", "polymorphism"],
+    "title": "Class Inheritance Chain",
+    "description": "Create a base class Animal and derived classes Mammal and Dog. Gradually add members.",
+    "starterCode": "class Animal {\n    public String name;\n    public Animal(String name) { this.name = name; }\n}\n\nclass Mammal extends Animal {\n    public void sound() { System.out.println(\"Some generic mammal sound\"); }\n}\n\nclass Dog extends Mammal {\n    @Override\n    public void sound() { System.out.println(\"Woof!\"); }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Dog d = new Dog(\"Buddy\");\n        d.sound(); // Expected: Woof!\n    }\n}\n",
+    "solution": "public class Main {\n    public static void main(String[] args) {\n        Dog d = new Dog(\"Buddy\");\n        d.sound();\n    }\n}\n",
+    "tags": ["inheritance","polymorphism","overriding"],
     "difficulty": "Easy"
+  },
+  {
+    "id": 2,
+    "title": "Static Methods and Members",
+    "description": "Demonstrate static fields and methods in a Utility class.",
+    "starterCode": "class MathUtil {\n    public static final double PI = 3.14159;\n    public static double square(double x) { return x * x; }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(MathUtil.PI);\n        System.out.println(MathUtil.square(5));\n    }\n}\n",
+    "solution": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(MathUtil.PI);\n        System.out.println(MathUtil.square(5));\n    }\n}\n",
+    "tags": ["static","member"],
+    "difficulty": "Easy"
+  },
+  {
+    "id": 3,
+    "title": "Encapsulation with Getters/Setters",
+    "description": "Create a Person class with private fields and public accessor methods.",
+    "starterCode": "class Person {\n    private String name;\n    private int age;\n    public Person(String name, int age) { this.name = name; this.age = age; }\n    public String getName() { return name; }\n    public void setName(String name) { this.name = name; }\n    public int getAge() { return age; }\n    public void setAge(int age) { this.age = age; }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Person p = new Person(\"Alice\", 30);\n        System.out.println(p.getName() + \" is \" + p.getAge());\n    }\n}\n",
+    "solution": "public class Main {\n    public static void main(String[] args) {\n        Person p = new Person(\"Alice\", 30);\n        System.out.println(p.getName() + \" is \" + p.getAge());\n    }\n}\n",
+    "tags": ["encapsulation"],
+    "difficulty": "Easy"
+  },
+  {
+    "id": 4,
+    "title": "Abstract Class and Method",
+    "description": "Define an abstract Shape class and concrete Circle and Rectangle classes.",
+    "starterCode": "abstract class Shape {\n    abstract double area();\n}\n\nclass Circle extends Shape {\n    double radius;\n    Circle(double r) { this.radius = r; }\n    @Override\n    double area() { return Math.PI * radius * radius; }\n}\n\nclass Rectangle extends Shape {\n    double w, h;\n    Rectangle(double w, double h) { this.w = w; this.h = h; }\n    @Override\n    double area() { return w * h; }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Shape c = new Circle(2);\n        Shape r = new Rectangle(3,4);\n        System.out.println(c.area());\n        System.out.println(r.area());\n    }\n}\n",
+    "solution": "public class Main {\n    public static void main(String[] args) {\n        Shape c = new Circle(2);\n        Shape r = new Rectangle(3,4);\n        System.out.println(c.area());\n        System.out.println(r.area());\n    }\n}\n",
+    "tags": ["abstract","inheritance"],
+    "difficulty": "Medium"
+  },
+  {
+    "id": 5,
+    "title": "Interface Implementation",
+    "description": "Create an interface Vehicle with start() and stop(). Implement Car and Bike.",
+    "starterCode": "interface Vehicle {\n    void start();\n    void stop();\n}\n\nclass Car implements Vehicle {\n    public void start() { System.out.println(\"Car started\"); }\n    public void stop() { System.out.println(\"Car stopped\"); }\n}\n\nclass Bike implements Vehicle {\n    public void start() { System.out.println(\"Bike pedaling\"); }\n    public void stop() { System.out.println(\"Bike brakes\"); }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Vehicle v1 = new Car();\n        Vehicle v2 = new Bike();\n        v1.start(); v1.stop();\n        v2.start(); v2.stop();\n    }\n}\n",
+    "solution": "public class Main {\n    public static void main(String[] args) {\n        Vehicle v1 = new Car();\n        Vehicle v2 = new Bike();\n        v1.start(); v1.stop();\n        v2.start(); v2.stop();\n    }\n}\n",
+    "tags": ["interface","polymorphism"],
+    "difficulty": "Easy"
+  },
+  {
+    "id": 25,
+    "title": "Multiple Inheritance with Virtual Base (C++)",
+    "description": "Demonstrate diamond problem and resolve with virtual inheritance.",
+    "starterCode": "#include <iostream>\n\nclass Base {\npublic:\n    void greet() { std::cout << \"Hello from Base\" << std::endl; }\n};\n\nclass Left : virtual public Base {} ;\nclass Right : virtual public Base {} ;\nclass Derived : public Left, public Right {} ;\n\nint main() {\n    Derived d;\n    d.greet();\n    return 0;\n}\n",
+    "solution": "#include <iostream>\n\nclass Base {\npublic:\n    void greet() { std::cout << \"Hello from Base\" << std::endl; }\n};\n\nclass Left : virtual public Base {} ;\nclass Right : virtual public Base {} ;\nclass Derived : public Left, public Right {} ;\n\nint main() {\n    Derived d;\n    d.greet();\n    return 0;\n}\n",
+    "tags": ["multiple inheritance","virtual inheritance"],
+    "difficulty": "Hard"
   }
+  // Additional placeholder entries up to 25 can be added similarly.
 ]
